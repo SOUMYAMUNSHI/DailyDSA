@@ -59,6 +59,29 @@ class LinkedList {
         length++;
     }
 
+    public Node removeLast() {
+        if (length == 0) // This if will run very begining when the remove function is callrd or the
+                         // initial length of listis null
+            return null;
+
+        Node temp = head; // initial value or If only one node is present
+        Node pre = head; // initial value or If only one node is present
+
+        while (temp.next != null) {
+            pre = temp;
+            temp = temp.next;
+        }
+        tail = pre;
+        tail.next = null;
+        length--;
+        if (length == 0) // ** This if will run after the previous length-- become zero
+        {
+            head = null;
+            tail = null;
+        }
+        return temp;
+    }
+
     public static void main(String[] args) {
         LinkedList myLinkedList = new LinkedList(4);
         myLinkedList.getLength();
@@ -69,7 +92,14 @@ class LinkedList {
         myLinkedList.append(9);
         System.out.println("The list after adding a element:");
         myLinkedList.getList();
-
+        myLinkedList.getHead();
+        myLinkedList.getTail();
+        System.out.println(myLinkedList.removeLast().value);
+        myLinkedList.getList();
+        System.out.println(myLinkedList.removeLast().value);
+        myLinkedList.getList();
+        System.out.println(myLinkedList.removeLast());
+        myLinkedList.getList();
     }
 
 }
