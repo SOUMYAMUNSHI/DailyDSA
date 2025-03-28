@@ -29,12 +29,14 @@ class LinkedList {
         }
     }
 
-    public void getLength() {
+    public int getLength() {
         Node temp = head;
+        int tempLength = 0;
         while (temp != null) {
-            System.out.println(temp.value);
             temp = temp.next;
+            tempLength++;
         }
+        return tempLength;
     }
 
     public void getHead() {
@@ -82,24 +84,50 @@ class LinkedList {
         return temp;
     }
 
+    public void prepend(int value) {
+        Node newNode = new Node(value);
+
+        if (length == 0) {
+            head = newNode;
+            tail = newNode;
+        } else {
+            newNode.next = head;
+            head = newNode;
+        }
+        length++;
+    }
+
     public static void main(String[] args) {
         LinkedList myLinkedList = new LinkedList(4);
-        myLinkedList.getLength();
-        myLinkedList.getHead();
-        myLinkedList.getTail();
-        System.out.println("The list before adding a element:");
-        myLinkedList.getList();
+        System.out.println("Legnth: " + myLinkedList.getLength());
         myLinkedList.append(9);
-        System.out.println("The list after adding a element:");
+        myLinkedList.prepend(18);
         myLinkedList.getList();
-        myLinkedList.getHead();
-        myLinkedList.getTail();
-        System.out.println(myLinkedList.removeLast().value);
-        myLinkedList.getList();
-        System.out.println(myLinkedList.removeLast().value);
-        myLinkedList.getList();
-        System.out.println(myLinkedList.removeLast());
-        myLinkedList.getList();
+        System.out.println("Legnth: " + myLinkedList.getLength());
+        // myLinkedList.getHead();
+        // myLinkedList.getTail();
+        // System.out.println("The list before adding a element:");
+        // myLinkedList.getList();
+        // myLinkedList.append(9);
+        // System.out.println("The list after adding a element:");
+        // myLinkedList.getList();
+        // myLinkedList.getHead();
+        // myLinkedList.getTail();
+        // System.out.println(myLinkedList.removeLast().value);
+        // myLinkedList.getList();
+        // System.out.println(myLinkedList.removeLast().value);
+        // myLinkedList.getList();
+        // System.out.println(myLinkedList.removeLast());
+        // myLinkedList.getList();
+        // myLinkedList.prepend(6);
+        // myLinkedList.getList();
+        // System.out.println(myLinkedList.getLength());
+        // myLinkedList.prepend(9);
+        // myLinkedList.prepend(10);
+        // myLinkedList.prepend(11);
+        // System.out.println("The list after prepending a element:");
+        // myLinkedList.getList();
+        // System.out.println(myLinkedList.getLength());
     }
 
 }
