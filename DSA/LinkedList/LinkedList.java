@@ -154,8 +154,35 @@ class LinkedList {
 
     }
 
+    public Node remove(int index) {
+        if (index < 0 || index >= length) {
+            return null;
+        }
+
+        if (index == 0) {
+            return removeFirst();
+        }
+
+        if (index == length - 1) {
+            return removeLast();
+        }
+
+        Node prev = get(index - 1);
+        Node currentNode = prev.next;
+        prev.next = currentNode.next;
+        currentNode.next = null;
+        length--;
+        return currentNode;
+    }
+
     public static void main(String[] args) {
         LinkedList myLinkedList = new LinkedList(4);
+        myLinkedList.append(10);
+        myLinkedList.insert(1, 11);
+        myLinkedList.getList();
+        // System.out.println(myLinkedList.getLength());
+        myLinkedList.remove(1);
+        myLinkedList.getList();
         // System.out.println("Legnth: " + myLinkedList.getLength());
         // myLinkedList.append(9);
         // myLinkedList.prepend(18);
@@ -169,9 +196,9 @@ class LinkedList {
         // myLinkedList.append(19);
         // System.out.println(myLinkedList.get(1).value);
         // System.out.println(myLinkedList.get(0).value);
-        myLinkedList.append(20);
-        myLinkedList.insert(1, 21);
-        myLinkedList.getList();
+        // myLinkedList.append(20);
+        // myLinkedList.insert(1, 21);
+        // myLinkedList.getList();
         // myLinkedList.getHead();
         // myLinkedList.getTail();
         // System.out.println("The list before adding a element:");
