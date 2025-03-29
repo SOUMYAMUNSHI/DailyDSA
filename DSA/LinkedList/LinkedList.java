@@ -117,7 +117,7 @@ class LinkedList {
         System.out.println("Legnth: " + myLinkedList.getLength());
         myLinkedList.append(9);
         myLinkedList.prepend(18);
-        myLinkedList.removeFirst();
+        System.out.println(myLinkedList.removeFirst().value);
         myLinkedList.getList();
         System.out.println("Legnth: " + myLinkedList.getLength());
         // myLinkedList.getHead();
