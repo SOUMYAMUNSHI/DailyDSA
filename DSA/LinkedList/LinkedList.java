@@ -133,6 +133,27 @@ class LinkedList {
         return false;
     }
 
+    public boolean insert(int index, int value) {
+        if (index < 0 || index > length) {
+            return false;
+        }
+        if (index == 0) {
+            prepend(index);
+            return true;
+        }
+        if (index == length) {
+            append(value);
+            return true;
+        }
+        Node newNode = new Node(value);
+        Node temp = get(index - 1);
+        newNode.next = temp.next;
+        temp.next = newNode;
+        length++;
+        return true;
+
+    }
+
     public static void main(String[] args) {
         LinkedList myLinkedList = new LinkedList(4);
         // System.out.println("Legnth: " + myLinkedList.getLength());
@@ -144,10 +165,13 @@ class LinkedList {
         // System.out.println(myLinkedList.get(0).value);
         // System.out.println("Legnth: " + myLinkedList.getLength());
         // myLinkedList.set(0, 10);
+        // myLinkedList.getList();
+        // myLinkedList.append(19);
+        // System.out.println(myLinkedList.get(1).value);
+        // System.out.println(myLinkedList.get(0).value);
+        myLinkedList.append(20);
+        myLinkedList.insert(1, 21);
         myLinkedList.getList();
-        myLinkedList.append(19);
-       System.out.println( myLinkedList.get(1).value);
-        System.out.println(myLinkedList.get(0).value);
         // myLinkedList.getHead();
         // myLinkedList.getTail();
         // System.out.println("The list before adding a element:");
