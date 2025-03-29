@@ -97,11 +97,27 @@ class LinkedList {
         length++;
     }
 
+    public Node removeFirst() {
+        if (length == 0) // This if will run if the length is zero from begining
+            return null;
+
+        Node temp = head;
+        head = head.next;
+        temp.next = null;
+        length--;
+        if (length == 0) // This if will run while the length become 0 after length--
+        {
+            tail = null;
+        }
+        return temp;
+    }
+
     public static void main(String[] args) {
         LinkedList myLinkedList = new LinkedList(4);
         System.out.println("Legnth: " + myLinkedList.getLength());
         myLinkedList.append(9);
         myLinkedList.prepend(18);
+        myLinkedList.removeFirst();
         myLinkedList.getList();
         System.out.println("Legnth: " + myLinkedList.getLength());
         // myLinkedList.getHead();
