@@ -175,14 +175,38 @@ class LinkedList {
         return currentNode;
     }
 
+    public void reverse() //this function is complex, better to watch LinkedList reverse()
+    {
+        Node temp = head;
+        head = tail;
+        tail = temp;
+
+        Node after = temp.next;
+        Node before = null;
+
+        for(int i = 0; i<length; i++){
+            after = temp.next;
+            temp.next = before;
+            before = temp;
+            temp = after;
+        }
+    }
+
     public static void main(String[] args) {
-        LinkedList myLinkedList = new LinkedList(4);
-        myLinkedList.append(10);
-        myLinkedList.insert(1, 11);
+        LinkedList myLinkedList = new LinkedList(1);
+        myLinkedList.append(2);
+        myLinkedList.append(3);
+        myLinkedList.append(4);
+        myLinkedList.reverse();
         myLinkedList.getList();
+        // myLinkedList.append(10);
+        // myLinkedList.insert(1, 11);
+        // myLinkedList.getList();
+        // myLinkedList.reverse();
+        // myLinkedList.getList();
         // System.out.println(myLinkedList.getLength());
-        myLinkedList.remove(1);
-        myLinkedList.getList();
+        // myLinkedList.remove(1);
+        // myLinkedList.getList();
         // System.out.println("Legnth: " + myLinkedList.getLength());
         // myLinkedList.append(9);
         // myLinkedList.prepend(18);
