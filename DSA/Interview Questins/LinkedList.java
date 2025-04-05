@@ -144,6 +144,25 @@ public class LinkedList {
         return false;
     }
 
+    public Node findKthFromEnd(int k) {
+        Node fast = head;
+        Node slow = head;
+
+        for (int i = 0; i < k; i++) {
+            if (fast == null) {
+                return null;
+            }
+            fast = fast.next;
+        }
+
+        while (fast != null) {
+            slow = slow.next;
+            fast = fast.next;
+        }
+
+        return slow;
+    }
+
     public static void main(String[] args) {
 
         LinkedList myLinkedList = new LinkedList(1);
@@ -178,10 +197,10 @@ public class LinkedList {
 
         /* This given code is for hasLoop() */
         // create a loop by connecting the tail to the second node
-        myLinkedList.getTail().next = myLinkedList.getHead().next;
+        // myLinkedList.getTail().next = myLinkedList.getHead().next;
 
-        System.out.println("Has Loop:");
-        System.out.println(myLinkedList.hasLoop());
+        // System.out.println("Has Loop:");
+        // System.out.println(myLinkedList.hasLoop());
 
         /*
          * EXPECTED OUTPUT:
@@ -192,6 +211,22 @@ public class LinkedList {
          */
 
         /* This above code is for hasLoop() */
+
+        /* This code is is for findKthFromEnd() */
+
+        int k = 2;
+        int result = myLinkedList.findKthFromEnd(k).value;
+
+        System.out.println(result); // Output: 4
+
+        /*
+         * EXPECTED OUTPUT:
+         * ----------------
+         * 4
+         * 
+         */
+
+        /* The above code is for findKthFromEnd() */
 
     }
 }

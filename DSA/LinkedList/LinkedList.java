@@ -175,7 +175,7 @@ class LinkedList {
         return currentNode;
     }
 
-    public void reverse() //this function is complex, better to watch LinkedList reverse()
+    public void reverse() // this function is complex, better to watch LinkedList reverse()
     {
         Node temp = head;
         head = tail;
@@ -184,11 +184,11 @@ class LinkedList {
         Node after = temp.next;
         Node before = null;
 
-        for(int i = 0; i<length; i++){
+        for (int i = 0; i < length; i++) {
             after = temp.next;
             temp.next = before;
             before = temp;
-            temp = after;
+            temp = after; // after = temp.next
         }
     }
 
