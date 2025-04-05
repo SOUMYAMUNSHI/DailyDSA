@@ -108,14 +108,40 @@ public class LinkedList {
         } else {
             if (length % 2 == 0) {
                 int mid = (length / 2) + 1;
-                return get(mid-1);
+                return get(mid - 1);
             }
-            if(length % 2 != 0){
+            if (length % 2 != 0) {
                 int mid = (length / 2) + 1;
-                return get(mid-1);
+                return get(mid - 1);
             }
             return head;
         }
+    }
+
+    /*
+     * @hasLoop()
+     * hasLoop() function is based on the algorithm called 'Tortoise and Hare
+     * algorithm'
+     * where the likedlist is traversed by the two pointers called 'slow' and 'fast'
+     * fast moves one node faster than slow.
+     * Now, if the loop is present, the 'fast' get inside the loop before the
+     * 'slow'. Now inside the circle the head will
+     * In each round, the 'fast' moves 1 step closer to the 'slow' inside the loop.
+     * 
+     * Like two runners on a circular track: faster one will always catch up.
+     */
+    public boolean hasLoop() {
+        Node slow = head;
+        Node fast = head;
+
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+            if (slow == fast) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public static void main(String[] args) {
@@ -126,14 +152,16 @@ public class LinkedList {
         myLinkedList.append(4);
         myLinkedList.append(5);
 
-        System.out.println("1 -> 2 -> 3 -> 4 -> 5");
-        System.out.println("Middle Node: " + myLinkedList.findMiddleNode().value);
+        /* This given code is for findMiddleNode() */
 
-        myLinkedList.append(6);
+        // System.out.println("1 -> 2 -> 3 -> 4 -> 5");
+        // System.out.println("Middle Node: " + myLinkedList.findMiddleNode().value);
 
-        System.out.println("===========================");
-        System.out.println("1 -> 2 -> 3 -> 4 -> 5 -> 6");
-        System.out.println("Middle Node: " + myLinkedList.findMiddleNode().value);
+        // myLinkedList.append(6);
+
+        // System.out.println("===========================");
+        // System.out.println("1 -> 2 -> 3 -> 4 -> 5 -> 6");
+        // System.out.println("Middle Node: " + myLinkedList.findMiddleNode().value);
 
         /*
          * EXPECTED OUTPUT:
@@ -145,6 +173,25 @@ public class LinkedList {
          * Middle Node: 4
          * 
          */
+
+        /* This given above code is for findMiddleNode() */
+
+        /* This given code is for hasLoop() */
+        // create a loop by connecting the tail to the second node
+        myLinkedList.getTail().next = myLinkedList.getHead().next;
+
+        System.out.println("Has Loop:");
+        System.out.println(myLinkedList.hasLoop());
+
+        /*
+         * EXPECTED OUTPUT:
+         * ----------------
+         * Has Loop:
+         * true
+         * 
+         */
+
+        /* This above code is for hasLoop() */
 
     }
 }

@@ -2,3 +2,5 @@
 class/
 *.c
 *.exe
+*.class
+tempCodeRunnerFile.java
