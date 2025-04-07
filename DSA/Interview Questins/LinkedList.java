@@ -144,6 +144,7 @@ public class LinkedList {
         return false;
     }
 
+    // It's an intresting code.. DryRun to understand
     public Node findKthFromEnd(int k) {
         Node fast = head;
         Node slow = head;
@@ -163,13 +164,46 @@ public class LinkedList {
         return slow;
     }
 
+    /*
+     * Given a value x you need to rearrange the linked list such that all nodes
+     * with a value less than x come before all nodes with a value greater than or
+     * equal to x.
+     */
+    public void partitionList(int x) {
+        if (head == null) {
+            return;
+        }
+        Node dummy1 = new Node(0);
+        Node dummy2 = new Node(0);
+
+        Node prev1 = dummy1;
+        Node prev2 = dummy2;
+
+        Node current = head;
+
+        while (current != null) {
+            if (current.value < x) {
+                prev1.next = current;
+                prev1 = current;
+            } else {
+                prev2.next = current;
+                prev2 = current;
+            }
+            current = current.next;
+        }
+
+        prev2.next = null;
+        prev1.next = dummy2.next;
+        head = dummy1.next;
+    }
+
     public static void main(String[] args) {
 
-        LinkedList myLinkedList = new LinkedList(1);
-        myLinkedList.append(2);
-        myLinkedList.append(3);
-        myLinkedList.append(4);
-        myLinkedList.append(5);
+        // LinkedList myLinkedList = new LinkedList(1);
+        // myLinkedList.append(2);
+        // myLinkedList.append(3);
+        // myLinkedList.append(4);
+        // myLinkedList.append(5);
 
         /* This given code is for findMiddleNode() */
 
@@ -214,10 +248,10 @@ public class LinkedList {
 
         /* This code is is for findKthFromEnd() */
 
-        int k = 2;
-        int result = myLinkedList.findKthFromEnd(k).value;
+        // int k = 2;
+        // int result = myLinkedList.findKthFromEnd(k).value;
 
-        System.out.println(result); // Output: 4
+        // System.out.println(result); // Output: 4
 
         /*
          * EXPECTED OUTPUT:
@@ -228,5 +262,46 @@ public class LinkedList {
 
         /* The above code is for findKthFromEnd() */
 
+        /* This bottom code is for Partition List function */
+        // Create a new LinkedList and append values to it
+        LinkedList ll = new LinkedList(3);
+        ll.append(5);
+        ll.append(8);
+        ll.append(10);
+        ll.append(2);
+        ll.append(1);
+
+        // Print the list before partitioning
+        System.out.println("LL before partitionList:");
+        ll.printList(); // Output: 3 5 8 10 2 1
+
+        // Call the partitionList method with x = 5
+        ll.partitionList(5);
+
+        // Print the list after partitioning
+        System.out.println("LL after partitionList:");
+        ll.printList(); // Output: 3 2 1 5 8 10
+
+        /*
+         * EXPECTED OUTPUT:
+         * ----------------
+         * LL before partition_list:
+         * 3
+         * 5
+         * 8
+         * 10
+         * 2
+         * 1
+         * LL after partition_list:
+         * 3
+         * 2
+         * 1
+         * 5
+         * 8
+         * 10
+         * 
+         */
+
+        /* This above code is for Partition List function */
     }
 }
