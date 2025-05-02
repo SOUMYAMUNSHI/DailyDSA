@@ -197,6 +197,32 @@ public class LinkedList {
         head = dummy1.next;
     }
 
+    public void removeDuplicates(){
+        Node temp1 = head;
+        
+        while(temp1 != null){
+            Node updatedLL = temp1;
+            Node temp2 = temp1.next;
+
+            while (temp2 != null) {
+                if(temp1.value == temp2.value){
+                    updatedLL.next = temp2.next;
+                }
+                else{
+                    updatedLL = temp2;
+                }
+                temp2 = temp2.next;
+            }
+            temp1 = temp1.next;
+        }
+    }
+
+
+
+
+
+
+
     public static void main(String[] args) {
 
         // LinkedList myLinkedList = new LinkedList(1);
@@ -268,19 +294,19 @@ public class LinkedList {
         ll.append(5);
         ll.append(8);
         ll.append(10);
-        ll.append(2);
-        ll.append(1);
+        ll.append(5);
+        ll.append(8);
 
         // Print the list before partitioning
-        System.out.println("LL before partitionList:");
-        ll.printList(); // Output: 3 5 8 10 2 1
+        // System.out.println("LL before partitionList:");
+        // ll.printList(); // Output: 3 5 8 10 2 1
 
-        // Call the partitionList method with x = 5
-        ll.partitionList(5);
+        // // Call the partitionList method with x = 5
+        // ll.partitionList(5);
 
-        // Print the list after partitioning
-        System.out.println("LL after partitionList:");
-        ll.printList(); // Output: 3 2 1 5 8 10
+        // // Print the list after partitioning
+        // System.out.println("LL after partitionList:");
+        // ll.printList(); // Output: 3 2 1 5 8 10
 
         /*
          * EXPECTED OUTPUT:
@@ -303,5 +329,9 @@ public class LinkedList {
          */
 
         /* This above code is for Partition List function */
+        System.out.println("Lenght is "+ll.length());
+        ll.removeDuplicates();
+        ll.printList();
+        System.out.println("Lenght is "+ ll.length());
     }
 }
